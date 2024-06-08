@@ -5,10 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'mimemagic', '0.3.3', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 6.0.3.7'
 # Use postgresql as the database for Active Record
 # gem 'pg', '~> 0.18'
 gem 'sqlite3', '~> 1.3.11'
