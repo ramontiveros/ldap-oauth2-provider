@@ -23,4 +23,4 @@ end
 # end
 
 bind 'tcp://0.0.0.0:80'
-bind 'ssl://0.0.0.0:443?key=/etc/letsencrypt/live/placeholderdomain/privkey.pem&cert=/etc/letsencrypt/live/placeholderdomain/fullchain.pem'
+bind 'ssl://0.0.0.0:443?key=/etc/letsencrypt/live/placeholderdomain/privkey.key&cert=/etc/letsencrypt/live/placeholderdomain/cert.crt&verify_mode=none&ca=/etc/letsencrypt/live/placeholderdomain/root_bundle.crt'
