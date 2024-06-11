@@ -53,7 +53,7 @@ class TokenGenerator < TokenBase
         handle_error('Failed to authenticate')
       end
     rescue => ex
-      logger.error ex.message
+      Rails.logger.error ex.message
       raise ex
     end
   end
