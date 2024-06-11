@@ -39,19 +39,23 @@ class TokenGenerator < TokenBase
         return handle_error('unsupported_grant_type')
       end
     end
-
-    ldap = LDAP_Client.new
-    result = ldap.authenticate(params)
-
-    if result
-      data = ldap.get_data(params)
-      @access_token = construct_jwt(data, ACCESS_TOKEN_EXPIRATION)
-      @refresh_token = construct_jwt(data, REFRESH_TOKEN_EXPIRATION)
-      @token_type = 'JWT'
-    else
-      handle_error('Failed to authenticate')
+    
+    begin
+      ldap = LDAP_Client.new
+      result = ldap.authenticate(params)
+      
+      if result
+        data = ldap.get_data(params)
+        @access_token = construct_jwt(data, ACCESS_TOKEN_EXPIRATION)
+        @refresh_token = construct_jwt(data, REFRESH_TOKEN_EXPIRATION)
+        @token_type = 'JWT'
+      else
+        handle_error('Failed to authenticate')
+      end
+    rescue => ex
+      logger.error ex.message
+      raise ex
     end
-
   end
 
 
