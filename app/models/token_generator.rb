@@ -42,6 +42,7 @@ class TokenGenerator < TokenBase
     
     begin
       ldap = LDAP_Client.new
+      Rails.logger.error params
       result = ldap.authenticate(params)
       
       if result
@@ -54,6 +55,7 @@ class TokenGenerator < TokenBase
       end
     rescue => ex
       Rails.logger.error ex.message
+      Rails.logger.error ex.backtrace.join("\n")
       raise ex
     end
   end
